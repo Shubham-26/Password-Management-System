@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+	<link rel='stylesheet' href='/stylesheets/login.css' />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+  </head>
+  <body>
+    
+   
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Password Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+		<li>
+		 <a class="nav-item nav-link " href="/">Home <span class="sr-only">(current)</span></a>
+		</li>
+	   <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Password Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="addNewCategory">Add New Category</a>
+          <a class="dropdown-item" href="passCategory">View All Category</a>
+        </div>
+      </li>
+	  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Password Details
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="addNewPassword">Add New Password</a>
+          <a class="dropdown-item" href="viewAllPassword">View All Password</a>
+        </div>
+      </li>
+     
+    </div>
+  </div>
+   <div class="navbar-header">
+  <a class="navbar-brand" href="#"><% if(loggedInUser){%><%= loggedInUser %><% } %></a>
+  <a class=" btn btn-secondary btn-sm" style="margin-top:10px" href="/logout">LogOut</a>
+	
+  </div>
+</nav>
+ <div class="container">
+<h1><%= title %></h1><br>
+
+
+
+   <form class="form-horizontal" action="/passCategory/edit/" method="post">
+    <div class="form-group border">
+	
+	<div class="form-group">
+	<input type="hidden" name="id" value="<%= id %>">
+
+      <label class="control-label col-sm-2" for="category">Category Name:</label>
+	  
+
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="category" placeholder="Enter category name"  value="<%= records.password_category %>" name="passwordcategory">
+      </div>
+	 
+
+	   <div class="col-sm-6">
+			<%if(errors !=''){%>
+				<p style="text-align:center;color:red;margin-top:20px"><%= errors.passwordcategory.msg %></p>
+			<% } %>
+			<%if(success !=''){%>
+				<p style="text-align:center;color:green;margin-top:20px"><%= success %></p>
+			<% } %>
+      </div>
+    </div>
+   
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-4">
+        <button type="submit" class="btn btn-primery btn-sm">Edit Category</button>
+      </div>
+    </div>
+	</div>
+  </form>
+</div>
+
+</div>
+  </body>
+</html>
+
+
+
